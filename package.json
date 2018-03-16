@@ -4,7 +4,7 @@
   "description": "A universal react next.js app designed to work for Google App Engine's Node.js Early Access Program",
   "main": "server.js",
   "scripts": {
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
