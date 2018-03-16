@@ -1,0 +1,141 @@
+import React from 'react';
+import Router from 'next/router';
+import 'isomorphic-unfetch';
+import Head from 'next/head';
+
+import Page from '../components/Page';
+import Modal from '../components/modal';
+import Link from 'next/link';
+
+export default class extends React.Component {
+  static async getInitialProps () {
+    // Async load 10 known images from Mia's collection
+    const res = await fetch('https://search.artsmia.org/ids/1355,3291,109328,127083,67472,2606,18346,1218');
+    const json = await res.json();
+    return { artworks: json.hits.hits };
+  }
+
+  constructor (props) {
+    super(props)
+    this.onKeyDown = this.onKeyDown.bind(this);
+  }
+
+  // handling escape close
+  componentDidMount () {
+    document.addEventListener('keydown', this.onKeyDown);
+  }
+
+  componentWillUnmount () {
+    document.removeEventListener('keydown', this.onKeyDown);
+  }
+
+  onKeyDown (e) {
+    if (!this.props.url.query.photoId) return;
+    if (e.keyCode === 27) {
+      this.props.url.back();
+    }
+  }
+
+  dismissModal () {
+    Router.push('/');
+  }
+
+  showArtwork (e, id) {
+    e.preventDefault();
+    Router.push(`/?photoId=${id}`, `artwork?id=${id}`);
+  }
+
+  selectArtworkById(id) {
+    let results = this.props.artworks.filter((artwork) => { return artwork._source.id == id; });
+    return results[0]._source;
+  }
+
+  render () {
+
+    const { url, artworks } = this.props;
+
+    return (
+      <Page>
+        <Head>
+          <title>Next.js demo</title>
+          <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+        </Head>
+
+        <h2>Lightbox Links</h2>
+
+      <div className='list'>
+        {
+          url.query.photoId &&
+            <Modal
+              artwork={this.selectArtworkById(url.query.photoId)}
+              onDismiss={() => this.dismissModal()}
+            />
+        }
+        {
+          artworks.map((artwork) => {
+            let id = artwork._source.id;
+            return (
+            <div key={id} className='photo'>
+              <a
+                className='photoLink'
+                href={`/artwork/?id=${id}`}
+                onClick={(e) => this.showArtwork(e, id)}
+                style={{backgroundImage: `url('https://1.api.artsmia.org/${id}.jpg')`}}
+              >
+
+              </a>
+            </div>
+            );
+          })
+        }
+        </div>
+
+        <h2>Direct Links</h2>
+        {
+          artworks.map((artwork) => {
+            let id = artwork._source.id;
+            return (
+              <li key={id}><Link href={`/artwork?id=${id}`}><a className="permalink">{ artwork._source.title}</a></Link></li>
+            );
+          })
+        }
+
+        <li><a href="/does-not-exist">404 example</a></li>
+
+        <style jsx>{`
+          .list {
+            padding: 50px;
+            text-align: center;
+          }
+
+          .photo .permalink {
+            display: inline-block;
+          }
+          .photo {
+            display: inline-block;
+            text-align:center
+          }
+
+          .photoLink {
+            color: #333;
+            verticalAlign: middle;
+            cursor: pointer;
+            background: #eee;
+            display: inline-block;
+            width: 250px;
+            height: 250px;
+            line-height: 250px;
+            margin: 10px;
+            border: 2px solid transparent;
+            background-position: 50% 50%;
+            background-size: cover;
+          }
+
+          .photoLink:hover {
+            borderColor: blue;
+          }
+        `}</style>
+      </Page>
+    )
+  }
+}

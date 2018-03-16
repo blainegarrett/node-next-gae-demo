@@ -1,0 +1,48 @@
+{
+  "name": "node-next-gae-demo",
+  "version": "0.0.1",
+  "description": "A universal react next.js app designed to work for Google App Engine's Node.js Early Access Program",
+  "main": "server.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blainegarrett/node-next-gae-demo.git"
+  },
+  "keywords": [
+    "node",
+    "nodejs",
+    "next",
+    "nextjs",
+    "google",
+    "app",
+    "engine",
+    "gae",
+    "cloud",
+    "isomorphic",
+    "ssr",
+    "universal",
+    "app"
+  ],
+  "author": "Blaine Garrett",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blainegarrett/node-next-gae-demo/issues"
+  },
+  "homepage": "https://github.com/blainegarrett/node-next-gae-demo#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "isomorphic-unfetch": "^2.0.0",
+    "next": "^5.0.1-canary.15",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.18.2",
+    "eslint-plugin-react": "^7.7.0"
+  }
+}

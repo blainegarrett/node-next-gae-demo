@@ -1,0 +1,15 @@
+runtime: nodejs8
+
+# what follows will be optional in the future:
+threadsafe: true
+service: web-standard
+handlers:
+- url: /.*
+  script: server.js # Note as of March 13, handlers are not yet obeyed.
+skip_files:
+  - ^(.*/)?#.*#$
+  - ^(.*/)?.*~$
+  - ^(.*/)?.*\.py[co]$
+  - ^(.*/)?.*/RCS/.*$
+  - ^(.*/)?\..*$
+  - ^.*node_modules(/.*)?
