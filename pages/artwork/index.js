@@ -1,14 +1,14 @@
 import React from 'react';
 import Router from 'next/router';
 import 'isomorphic-unfetch';
-import Photo from '../components/frame';
-import Page from '../components/Page';
+import Photo from '../../components/frame';
+import Page from '../../components/Page';
 import Head from 'next/head';
 
-export default class extends React.Component {
+export default class ArtworkPage extends React.Component {
   static async getInitialProps (ctx) {
-    let {query} = ctx;
-    let id = query.id;
+    //let id = ctx.query.id; // how to access query params
+    let id = ctx.req.params.id;
 
     // Async load artwork resource
     const res = await fetch('https://search.artsmia.org/id/' + id);

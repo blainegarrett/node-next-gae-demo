@@ -14,7 +14,7 @@ export default ({ artwork }) => {
             <h3>{ artwork.title }</h3>
             <p>{ artwork.artist }</p>
 
-            <p><a href={"https://collections.artsmia.org/art/" + id }>View on Mia's Website</a></p>
+            <p><a target="_new" href={"https://collections.artsmia.org/art/" + id }>View on Mia's Website</a></p>
           </li>
         </ul>
       </div>

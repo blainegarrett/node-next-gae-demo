@@ -42,7 +42,7 @@ export default class extends React.Component {
 
   showArtwork (e, id) {
     e.preventDefault();
-    Router.push(`/?photoId=${id}`, `artwork?id=${id}`);
+    Router.push(`/?showModal=${id}`, `/artwork/${id}`);
   }
 
   selectArtworkById(id) {
@@ -65,9 +65,9 @@ export default class extends React.Component {
 
       <div className='list'>
         {
-          url.query.photoId &&
+          url.query.showModal &&
             <Modal
-              artwork={this.selectArtworkById(url.query.photoId)}
+              artwork={this.selectArtworkById(url.query.showModal)}
               onDismiss={() => this.dismissModal()}
             />
         }
@@ -78,7 +78,7 @@ export default class extends React.Component {
             <div key={id} className='photo'>
               <a
                 className='photoLink'
-                href={`/artwork/?id=${id}`}
+                href={`/artwork/${id}`}
                 onClick={(e) => this.showArtwork(e, id)}
                 style={{backgroundImage: `url('https://1.api.artsmia.org/${id}.jpg')`}}
               >
@@ -95,7 +95,7 @@ export default class extends React.Component {
           artworks.map((artwork) => {
             let id = artwork._source.id;
             return (
-              <li key={id}><Link href={`/artwork?id=${id}`}><a className="permalink">{ artwork._source.title}</a></Link></li>
+              <li key={id}><Link href={`/artwork/${id}`}><a className="permalink">{ artwork._source.title}</a></Link></li>
             );
           })
         }
