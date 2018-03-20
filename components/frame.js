@@ -1,7 +1,7 @@
-import React from 'react'
-import Link from 'next/link'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export default ({ artwork }) => {
+const Frame = ({ artwork }) => {
   let id = artwork.id;
 
   return (
@@ -14,7 +14,7 @@ export default ({ artwork }) => {
             <h3>{ artwork.title }</h3>
             <p>{ artwork.artist }</p>
 
-            <p><a target="_new" href={"https://collections.artsmia.org/art/" + id }>View on Mia's Website</a></p>
+            <p><a target="_new" href={'https://collections.artsmia.org/art/' + id }>View on Mia Website</a></p>
           </li>
         </ul>
       </div>
@@ -62,4 +62,10 @@ export default ({ artwork }) => {
         }
       `}</style>
     </div>);
-  };
+};
+
+Frame.propTypes = {
+  artwork: PropTypes.object
+};
+
+export default Frame;

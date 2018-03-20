@@ -2,7 +2,7 @@ runtime: nodejs8
 
 # what follows will be optional in the future:
 threadsafe: true
-service: web-standard
+service: node-next-gae-demo
 handlers:
 - url: /.*
   script: server.js # Note as of March 13, handlers are not yet obeyed.

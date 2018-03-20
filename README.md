@@ -1,6 +1,8 @@
 # node-next-gae-demo
 A working example of running next.js on Google AppEngine's Node Standard Environment Early Access Program.
 
+**View live demo at [http://node-next-gae-demo.blaine-garrett.appspot.com/](http://node-next-gae-demo.blaine-garrett.appspot.com/)**
+
 **Important** Node.js on App Engine Standard is in early access (not even Alpha or Beta). It is provided without guarantee. Read below for more information.
 
 # Development

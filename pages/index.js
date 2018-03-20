@@ -1,13 +1,16 @@
 import React from 'react';
 import Router from 'next/router';
+import PropTypes from 'prop-types';
+
 import 'isomorphic-unfetch';
 import Head from 'next/head';
+import Link from 'next/link';
 
 import Page from '../components/Page';
 import Modal from '../components/modal';
-import Link from 'next/link';
 
-export default class extends React.Component {
+
+export default class Index extends React.Component {
   static async getInitialProps () {
     // Async load 10 known images from Mia's collection
     const res = await fetch('https://search.artsmia.org/ids/1355,3291,109328,127083,67472,2606,18346,1218');
@@ -16,7 +19,7 @@ export default class extends React.Component {
   }
 
   constructor (props) {
-    super(props)
+    super(props);
     this.onKeyDown = this.onKeyDown.bind(this);
   }
 
@@ -63,31 +66,30 @@ export default class extends React.Component {
 
         <h2>Lightbox Links</h2>
 
-      <div className='list'>
-        {
-          url.query.showModal &&
-            <Modal
-              artwork={this.selectArtworkById(url.query.showModal)}
-              onDismiss={() => this.dismissModal()}
-            />
-        }
-        {
-          artworks.map((artwork) => {
-            let id = artwork._source.id;
-            return (
-            <div key={id} className='photo'>
-              <a
-                className='photoLink'
-                href={`/artwork/${id}`}
-                onClick={(e) => this.showArtwork(e, id)}
-                style={{backgroundImage: `url('https://1.api.artsmia.org/${id}.jpg')`}}
-              >
-
-              </a>
-            </div>
-            );
-          })
-        }
+        <div className='list'>
+          {
+            url.query.showModal &&
+              <Modal
+                artwork={this.selectArtworkById(url.query.showModal)}
+                onDismiss={() => this.dismissModal()}
+              />
+          }
+          {
+            artworks.map((artwork) => {
+              let id = artwork._source.id;
+              return (
+                <div key={id} className='photo'>
+                  <a
+                    className='photoLink'
+                    href={`/artwork/${id}`}
+                    onClick={(e) => this.showArtwork(e, id)}
+                    style={{backgroundImage: `url('https://1.api.artsmia.org/${id}.jpg')`}}
+                  >
+                  </a>
+                </div>
+              );
+            })
+          }
         </div>
 
         <h2>Direct Links</h2>
@@ -100,7 +102,8 @@ export default class extends React.Component {
           })
         }
 
-        <li><a href="/does-not-exist">404 example</a></li>
+        <li><a href="/does-not-exist">404 example</a> (Unmatched Route)</li>
+        <li><a href="/artwork/asdf">404 example</a> (Matched Route but matching data not exist)</li>
 
         <style jsx>{`
           .list {
@@ -136,6 +139,11 @@ export default class extends React.Component {
           }
         `}</style>
       </Page>
-    )
+    );
   }
 }
+
+Index.propTypes = {
+  url: PropTypes.object,
+  artworks: PropTypes.array
+};

@@ -1,5 +1,6 @@
 import React from 'react';
-import Router from 'next/router';
+import PropTypes from 'prop-types';
+
 import 'isomorphic-unfetch';
 import Photo from '../../components/frame';
 import Page from '../../components/Page';
@@ -35,7 +36,6 @@ export default class ArtworkPage extends React.Component {
       <Page>
         <Head>
           <title>{ artwork.title } Next.js demo</title>
-          <meta name='viewport' content='initial-scale=1.0, width=device-width' />
         </Head>
 
         <div className='permalink'>
@@ -59,3 +59,8 @@ export default class ArtworkPage extends React.Component {
     );
   }
 }
+
+ArtworkPage.propTypes = {
+  artwork: PropTypes.object,
+  resourceNotFound: PropTypes.bool
+};

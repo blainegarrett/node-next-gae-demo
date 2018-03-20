@@ -1,12 +1,13 @@
-import React from 'react'
-import Photo from './frame'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Photo from './frame';
 
-export default class extends React.Component {
+export default class Modal extends React.Component {
   dismiss (e) {
     if (this._shim === e.target ||
        this._photoWrap === e.target) {
       if (this.props.onDismiss) {
-        this.props.onDismiss()
+        this.props.onDismiss();
       }
     }
   }
@@ -36,6 +37,11 @@ export default class extends React.Component {
           }
         `}</style>
       </div>
-    )
+    );
   }
 }
+
+Modal.propTypes = {
+  artwork: PropTypes.object,
+  onDismiss: PropTypes.func
+};
