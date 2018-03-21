@@ -10,16 +10,17 @@ const port = dev ? 3000 : 8080;
 app.prepare().then(() => {
   const server = express();
 
-  // Allow next and webpack urls - see: https://github.com/zeit/next.js/issues/1433
-  server.get(/next/, (req,res)=> { handle(req,res); });
-  server.get(/webpack/, (req,res)=> { handle(req,res); });
+  // If you need /:param/ type urls allow next and webpack urls - see: https://github.com/zeit/next.js/issues/1433
+  //server.get(/next/, (req,res)=> { handle(req,res); });
+  //server.get(/webpack/, (req,res)=> { handle(req,res); });
 
-  // Redirect traffic for artwork to /artwork/index.html
+  // Route traffic for /artwork to /pages/artwork/index.js
   server.get('/artwork/:artworkId', (req, res) => {
     //console.log(req.params); // url params - note query is ignored. If you need query params, see: https://github.com/zeit/next.js/blob/master/examples/parameterized-routing/server.js#L25
     return app.render(req, res, '/artwork', req.params);
   });
 
+  // Route all other urls to next "as is" - see note above about /next/ and /webpack/
   server.get('*', (req, res) => {
     return handle(req, res);
   });
