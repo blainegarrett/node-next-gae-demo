@@ -97,7 +97,7 @@ export default class Index extends React.Component {
           artworks.map((artwork) => {
             let id = artwork._source.id;
             return (
-              <li key={id}><Link href={`/artwork/${id}`}><a className="permalink">{ artwork._source.title}</a></Link></li>
+              <li key={id}><Link as={`/artwork/${id}`} href={`/artwork?artworkId=${id}`}><a className="permalink">{ artwork._source.title}</a></Link></li>
             );
           })
         }

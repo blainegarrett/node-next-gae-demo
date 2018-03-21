@@ -15,8 +15,8 @@ app.prepare().then(() => {
   server.get(/webpack/, (req,res)=> { handle(req,res); });
 
   // Redirect traffic for artwork to /artwork/index.html
-  server.get('/artwork/:id', (req, res) => {
-    // console.log(req.params); // url params - note query is ignored. If you need query params, see: https://github.com/zeit/next.js/blob/master/examples/parameterized-routing/server.js#L25
+  server.get('/artwork/:artworkId', (req, res) => {
+    //console.log(req.params); // url params - note query is ignored. If you need query params, see: https://github.com/zeit/next.js/blob/master/examples/parameterized-routing/server.js#L25
     return app.render(req, res, '/artwork', req.params);
   });
 

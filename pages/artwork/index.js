@@ -8,8 +8,10 @@ import Head from 'next/head';
 
 export default class ArtworkPage extends React.Component {
   static async getInitialProps (ctx) {
-    //let id = ctx.query.id; // how to access query params
-    let id = ctx.req.params.id;
+    // Get id off query (via <Link as="/artwork?artworkId=..."> and express mapping of params => query)
+
+    let id = ctx.query.artworkId; // Query Params
+    //let id = ctx.req.params.id; // Route Params
 
     // Async load artwork resource
     const res = await fetch('https://search.artsmia.org/id/' + id);
