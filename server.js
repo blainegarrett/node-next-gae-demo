@@ -1,4 +1,4 @@
-// server.js is required entry point for
+// server.js is required entry for GAE (vs. start script) - This will likely not be the case post EAP
 const express = require('express');
 const next = require('next');
 
