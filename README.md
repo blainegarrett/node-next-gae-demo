@@ -3,6 +3,8 @@ A working example of running next.js on Google AppEngine's Node Standard Environ
 
 **View live demo at [http://node-next-gae-demo.blaine-garrett.appspot.com/](http://node-next-gae-demo.blaine-garrett.appspot.com/)**
 
+* Be sure to also check out this demo [with material-ui support](https://github.com/blainegarrett/material-node-next-gae-demo).
+
 **Important** Node.js on App Engine Standard is in early access (not even Alpha or Beta). It is provided without guarantee. Read below for more information.
 
 # Development
