@@ -1,6 +1,6 @@
 {
   "name": "node-next-gae-demo",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "A universal react next.js app designed to work for Google App Engine's Node.js Early Access Program",
   "main": "server.js",
   "scripts": {
