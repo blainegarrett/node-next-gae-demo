@@ -24,11 +24,11 @@ export default class ArtworkPage extends React.Component {
       resourceNotFound = true;
     }
 
-    return { artwork: json, resourceNotFound:resourceNotFound };
+    return {artwork:json, resourceNotFound:resourceNotFound};
   }
 
   render() {
-    var { artwork, resourceNotFound} = this.props;
+    var {artwork, resourceNotFound} = this.props;
 
     if (resourceNotFound) {
       return (<Page>Could not find artwork</Page>);

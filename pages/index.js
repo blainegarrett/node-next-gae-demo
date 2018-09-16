@@ -1,21 +1,20 @@
 import React from 'react';
-import Router from 'next/router';
+import { withRouter } from 'next/router';
 import PropTypes from 'prop-types';
 
 import 'isomorphic-unfetch';
 import Head from 'next/head';
 import Link from 'next/link';
-
 import Page from '../components/Page';
 import Modal from '../components/modal';
 
 
-export default class Index extends React.Component {
+class Index extends React.Component {
   static async getInitialProps () {
     // Async load 10 known images from Mia's collection
     const res = await fetch('https://search.artsmia.org/ids/1355,3291,109328,127083,67472,2606,18346,1218');
     const json = await res.json();
-    return { artworks: json.hits.hits };
+    return { artworks: json.hits.hits};
   }
 
   constructor (props) {
@@ -33,19 +32,19 @@ export default class Index extends React.Component {
   }
 
   onKeyDown (e) {
-    if (!this.props.url.query.photoId) return;
+    if (!this.props.router.query.showModal) return;
     if (e.keyCode === 27) {
-      this.props.url.back();
+      this.props.router.back();
     }
   }
 
   dismissModal () {
-    Router.push('/');
+    this.props.router.push('/');
   }
 
   showArtwork (e, id) {
     e.preventDefault();
-    Router.push(`/?showModal=${id}`, `/artwork/${id}`);
+    this.props.router.push(`/?showModal=${id}`, `/artwork/${id}`);
   }
 
   selectArtworkById(id) {
@@ -55,12 +54,12 @@ export default class Index extends React.Component {
 
   render () {
 
-    const { url, artworks } = this.props;
+    const {router, artworks} = this.props;
 
     return (
       <Page>
         <Head>
-          <title>Next.js demo</title>
+          <title>Next.js Demo</title>
           <meta name='viewport' content='initial-scale=1.0, width=device-width' />
         </Head>
 
@@ -68,9 +67,9 @@ export default class Index extends React.Component {
 
         <div className='list'>
           {
-            url.query.showModal &&
+            router.query.showModal &&
               <Modal
-                artwork={this.selectArtworkById(url.query.showModal)}
+                artwork={this.selectArtworkById(router.query.showModal)}
                 onDismiss={() => this.dismissModal()}
               />
           }
@@ -143,7 +142,8 @@ export default class Index extends React.Component {
   }
 }
 
+export default withRouter(Index);
 Index.propTypes = {
-  url: PropTypes.object,
-  artworks: PropTypes.array
+  artworks: PropTypes.array,
+  router: PropTypes.any
 };
