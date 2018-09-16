@@ -102,7 +102,7 @@ class Index extends React.Component {
         }
 
         <li><a href="/does-not-exist">404 example</a> (Un-matched Route)</li>
-        <li><a href="/artwork/asdf123">404 example</a> (Matched Route but matching data not exist)</li>
+        <li><a href="/artwork/asdf123XYZ">404 example</a> (Matched Route but matching data not exist)</li>
 
         <style jsx>{`
           .list {

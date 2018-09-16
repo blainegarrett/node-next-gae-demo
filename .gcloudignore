@@ -15,3 +15,13 @@
 
 # Node.js dependencies:
 node_modules/
+*.hot-update.js*
+
+# Other config and Files
+README.md
+.eslintignore
+.eslintrc
+
+# Source code
+/pages/
+/components/
