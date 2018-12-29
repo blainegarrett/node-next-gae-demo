@@ -1,6 +1,11 @@
 # node-next-gae-demo
 A working example of running next.js on Google AppEngine's Node Standard Environment Early Access Program.
 
+**Update**: This has been updated 2018-12-29 to work with:
+ * nodejs10 runtime on Appengine
+ * Next.js 7.0.2
+
+
 **View live demo at [http://node-next-gae-demo.blaine-garrett.appspot.com/](http://node-next-gae-demo.blaine-garrett.appspot.com/)**
 
 * Be sure to also check out this demo [with material-ui support](https://github.com/blainegarrett/material-node-next-gae-demo).
@@ -22,13 +27,13 @@ Note: You need [node](https://nodejs.org) installed. I am using v6.10.2
 This will deploy your build to a version of the `node-next-gae-demo` service (as defined in app.yaml) in your *<your_project_id>* project. Learn more about [services](https://cloud.google.com/appengine/docs/standard/python/microservices-on-app-engine) and [versions](https://cloud.google.com/appengine/docs/admin-api/deploying-apps) in GAE).
 
 `gcloud --project your_project_id app deploy app.yaml --version version_name`
+
 eg: `gcloud --project blaine-garrett app deploy app.yaml --version main`
 
 **Prerequisites**:
 * You must have a Google Cloud Account created. [Sign up here](https://cloud.google.com/).
 * You must have a project created. Replace *your_project_id* with the id of your project.
 * You must have the Google Cloud SDK command line tools installed. [Installation Instructions](https://cloud.google.com/sdk/)
-* !!You must have applied and been accepted to the Early Access Program. [Apply here](https://goo.gl/forms/wAYBySsK9sc074hk2).
 
 # Important Notes for GAE
 * Unlike other runtimes supported by App Engine, you cannot run your application locally via dev_appserver.py or equivalent. You must use the node runtime installed to your machine.
