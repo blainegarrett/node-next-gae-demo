@@ -6,6 +6,7 @@ import Photo from '../../components/frame';
 import Page from '../../components/Page';
 import Head from 'next/head';
 
+
 export default class ArtworkPage extends React.Component {
   static async getInitialProps (ctx) {
     // Get id off query (via <Link as="/artwork?artworkId=..."> and express mapping of params => query)
