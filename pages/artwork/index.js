@@ -1,22 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import 'isomorphic-unfetch';
+import axios from 'axios';
 import Photo from '../../components/frame';
 import Page from '../../components/Page';
 import Head from 'next/head';
 
-
 export default class ArtworkPage extends React.Component {
-  static async getInitialProps (ctx) {
+  static async getInitialProps(ctx) {
     // Get id off query (via <Link as="/artwork?artworkId=..."> and express mapping of params => query)
 
     let id = ctx.query.artworkId; // Query Params
     //let id = ctx.req.params.id; // Route Params
 
     // Async load artwork resource
-    const res = await fetch('https://search.artsmia.org/id/' + id);
-    const json = await res.json();
+    const res = await axios('https://search.artsmia.org/id/' + id);
+    const json = await res.data;
 
     // The api returns "null" as the body with a 200 status code if an id doesn't exist
     let resourceNotFound = false;
@@ -25,24 +24,24 @@ export default class ArtworkPage extends React.Component {
       resourceNotFound = true;
     }
 
-    return {artwork:json, resourceNotFound:resourceNotFound};
+    return { artwork: json, resourceNotFound: resourceNotFound };
   }
 
   render() {
-    var {artwork, resourceNotFound} = this.props;
+    var { artwork, resourceNotFound } = this.props;
 
     if (resourceNotFound) {
-      return (<Page>Could not find artwork</Page>);
+      return <Page>Could not find artwork</Page>;
     }
 
     return (
       <Page>
         <Head>
-          <title>{ artwork.title } Next.js demo</title>
+          <title>{artwork.title} Next.js demo</title>
         </Head>
 
-        <div className='permalink'>
-          <div className='wrap'>
+        <div className="permalink">
+          <div className="wrap">
             <Photo artwork={artwork} />
           </div>
           <style jsx>{`

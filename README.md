@@ -2,14 +2,19 @@
 A simple working example of running [Next.js](https://nextjs.org/) on Google App Engine's [Node Standard Environment](https://cloud.google.com/appengine/docs/standard/nodejs/)
 
 **Update**:
+* 2019-03-30:
+  * Upgraded eslint to avoid js-yaml security vulnerability
+  * Removed isopmorphic-unfetch in lieu of axios
+  * Added gzip compression
+
 * 2019-03-09:
- * Upgraded to Next.js 8.0.3
- * Upgraded react and react dom to 16.8.3 (aka "the one with hooks")
- * Various other package updates
+  * Upgraded to Next.js 8.0.3
+  * Upgraded react and react dom to 16.8.3 (aka "the one with hooks")
+  * Various other package updates
 
 * 2018-12-29:
- * Updated to use nodejs10 runtime on App Engine
- * Upgraded to Next.js 7.0.2
+  * Updated to use nodejs10 runtime on App Engine
+  * Upgraded to Next.js 7.0.2
 
 # Live Demo
 **View live demo at [http://node-next-gae-demo.blaine-garrett.appspot.com/](http://node-next-gae-demo.blaine-garrett.appspot.com/)**
