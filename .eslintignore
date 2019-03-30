@@ -1,1 +1,5 @@
 build/*
+README.md
+app.yaml
+.gitignore
+.gcloudignore
