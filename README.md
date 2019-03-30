@@ -6,6 +6,7 @@ A simple working example of running [Next.js](https://nextjs.org/) on Google App
   * Upgraded eslint to avoid js-yaml security vulnerability
   * Removed isopmorphic-unfetch in lieu of axios
   * Added gzip compression
+  * Minor prep for PWA
 
 * 2019-03-09:
   * Upgraded to Next.js 8.0.3
