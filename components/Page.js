@@ -15,7 +15,7 @@ const Page = ({ children }) => (
             href="https://github.com/blainegarrett/node-next-gae-demo"
             title="Fork me on GitHub"
           >
-            v01.1 - See source code on Github
+            v01.2 - See source code on Github
           </a>
         </p>
         <p>
