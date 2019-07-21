@@ -3,8 +3,8 @@ A simple working example of running [Next.js](https://nextjs.org/) on Google App
 
 **Update**:
 * v0.2.0 - 2019-07-21
-  * Upgraded to Next.js 9
-  * Switched routing to Next.js 9's filebased routing and removed routes from server.js
+  * Upgraded to [Next.js 9](https://nextjs.org/blog/next-9)
+  * Switched routing to Next.js 9's [filebased routing](https://github.com/zeit/next.js#dynamic-routing) and removed routes from server.js
   * Retooled `start` script for better deployed ngnix performance
   * Introduced `start-local` for separating local run from deployed runs
   * Upgraded various packages
@@ -73,4 +73,4 @@ It pulls data from the Minneapolis Institute of Art's [Elastic Search api](https
 
 It demonstrates resolving data dependencies server side (and client side), setting meta content, as well as returning 404 status codes server side based on the results of the REST data.
 
-The demo was presented as part of a lightning talk about Node/Next/GAE at the [React Minneapolis Meetup](https://www.meetup.com/React-Minneapolis-Meetup/) March 15th, 2018 with permission from the GAE Node.js team. [View slides for the presentation](https://docs.google.com/presentation/d/1pUc8VbT4J5ca4qe2zIbqezO6EhLER6E_e5WgsGitDr0/edit?usp=sharing).
+The demo was presented as part of a lightning talk about Node/Next/GAE at the [React Minneapolis Meetup](https://www.meetup.com/React-Minneapolis-Meetup/) March 15th, 2018 with permission from the GAE Node.js team while Node support was still in EAP. [View slides for the presentation](https://docs.google.com/presentation/d/1pUc8VbT4J5ca4qe2zIbqezO6EhLER6E_e5WgsGitDr0/edit?usp=sharing).
