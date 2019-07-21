@@ -1,13 +1,17 @@
-// server.js is required entry for GAE (vs. start script) - This will likely not be the case post EAP
 const express = require('express');
-const path = require('path');
 const next = require('next');
 var compression = require('compression');
 
+/*
+Note: process.env.NODE_ENV is automatically set by GAE  when deployed
+  but will need to be manually set locally via `NODE_ENV=production npm run start`
+*/
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 
 const handle = app.getRequestHandler();
+
+// GAE passes the port the app will run on via process.env.PORT
 const port = process.env.PORT ? process.env.PORT : 3000;
 
 app
@@ -16,24 +20,14 @@ app
     const server = express();
     server.use(compression());
 
-    // If you need /:param/ type urls allow next and webpack urls - see: https://github.com/zeit/next.js/issues/1433
-    //server.get(/next/, (req,res)=> { handle(req,res); });
-    //server.get(/webpack/, (req,res)=> { handle(req,res); });
-
-    // Route traffic for /artwork to /pages/artwork/index.js
-    server.get('/artwork/:artworkId', (req, res) => {
-      //console.log(req.params); // url params - note query is ignored. If you need query params, see: https://github.com/zeit/next.js/blob/master/examples/parameterized-routing/server.js#L25
-      return app.render(req, res, '/artwork', req.params);
-    });
-
-    // Route all other urls to next "as is" - see note above about /next/ and /webpack/
-    server.get('*', (req, res) => {
-      return handle(req, res);
-    });
+    // Note: We're using Next.Js 9's file based dynamic routing so no need to match dynamic urls as in  version
+    server.get('*', (req, res) => handle(req, res));
 
     server.listen(port, err => {
       if (err) throw err;
-      console.log(`> Ready on http://localhost:${port}`);
+      console.log(
+        `> Ready on http://localhost:${port} NODE_ENV: ${process.env.NODE_ENV}`
+      );
     });
   })
   .catch(ex => {

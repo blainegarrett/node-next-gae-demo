@@ -97,7 +97,7 @@ class Index extends React.Component {
             let id = artwork._source.id;
             return (
               <li key={id}>
-                <Link as={`/artwork/${id}`} href={`/artwork?artworkId=${id}`}>
+                <Link as={`/artwork/${id}`} href="/artwork/[artworkId]">
                   <a title={artwork._source.title} className="permalink">
                     {artwork._source.title}
                   </a>
