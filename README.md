@@ -2,6 +2,8 @@
 A simple working example of running [Next.js](https://nextjs.org/) on Google App Engine's [Node Standard Environment](https://cloud.google.com/appengine/docs/standard/nodejs/)
 
 **Update**:
+* v0.2.1 - 2019-10-12
+  * Upgraded several packages
 * v0.2.0 - 2019-07-21
   * Upgraded to [Next.js 9](https://nextjs.org/blog/next-9)
   * Switched routing to Next.js 9's [filebased routing](https://github.com/zeit/next.js#dynamic-routing) and removed routes from server.js
