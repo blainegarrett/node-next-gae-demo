@@ -2,6 +2,8 @@
 A simple working example of running [Next.js](https://nextjs.org/) on Google App Engine's [Node Standard Environment](https://cloud.google.com/appengine/docs/standard/nodejs/)
 
 **Update**:
+* v0.2.2 - 2019-10-25
+  * Upgrading various packages
 * v0.2.1 - 2019-10-12
   * Upgraded several packages
 * v0.2.0 - 2019-07-21
