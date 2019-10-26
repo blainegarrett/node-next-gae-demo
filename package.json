@@ -9,7 +9,8 @@
     "start": "node server.js",
     "start-local": "NODE_ENV=production PORT=8080 node server.js",
     "lint": "eslint .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy-gae": "gcloud --project blaine-garrett app deploy app.yaml --version main --verbosity=debug"
   },
   "repository": {
     "type": "git",
