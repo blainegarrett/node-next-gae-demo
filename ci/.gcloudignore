@@ -14,14 +14,26 @@
 .gitignore
 
 # Node.js dependencies:
+/build
 node_modules/
 *.hot-update.js*
 
 # Other config and Files
+Makefile
 README.md
 .eslintignore
 .eslintrc
+.github
+.vscode
+jsdoc.conf.json
+
+# Test Related Things - Leave these unskipped for test run
+# jest.config.js
+# /tests # We need these to run tests
+coverage/
 
 # Source code
-/pages/
-/components/
+.DS_Store
+/build
+#/pages # We need the source to build
+#/src  # We need the source to build

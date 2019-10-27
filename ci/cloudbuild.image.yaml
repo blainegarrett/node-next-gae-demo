@@ -1,0 +1,16 @@
+####################################
+# Build to Generate Docker Image   #
+####################################
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'gcr.io/$PROJECT_ID/gae-node-next-demo:prod',
+        '-f',
+        './ci/Dockerfile.prod',
+        '.',
+      ]
+
+images: ['gcr.io/$PROJECT_ID/gae-node-next-demo']

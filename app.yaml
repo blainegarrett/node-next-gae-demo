@@ -1,7 +1,7 @@
 runtime: nodejs10
+env: flex
 
 # what follows will be optional in the future:
 service: node-next-gae-demo
-handlers:
-- url: /.*
-  script: auto
+manual_scaling:
+  instances: 1
