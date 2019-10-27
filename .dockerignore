@@ -1,9 +1,26 @@
+########################################################################
+#  Docker Ignore file                                                  #
+#                                                                      #
+#  Anything not defined here will be copied to build the image         #
+#  Note: This must be in project root & named .dockerignore exactly    #
+########################################################################
+
+# Node Things
 node_modules
 npm-debug.log
+
+# Git Things
 .git
 .gitignore
-.next
-build
+
+# Node Development things
 README.md
 .eslintignore
 .eslintrc
+
+# Next.js Things
+.next
+build
+
+# Build Things
+ci
