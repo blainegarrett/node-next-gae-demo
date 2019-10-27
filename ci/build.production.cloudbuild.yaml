@@ -1,0 +1,19 @@
+####################################
+# Build to Generate Docker Image   #
+# This pushes to Google Container  #
+#   Registry as well               #
+####################################
+
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'gcr.io/$PROJECT_ID/gae-node-next-demo:prod',
+        '-f',
+        './ci/build.production.Dockerfile',
+        '.',
+      ]
+
+images: ['gcr.io/$PROJECT_ID/gae-node-next-demo']
