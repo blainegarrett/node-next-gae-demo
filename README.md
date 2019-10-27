@@ -3,7 +3,7 @@ A simple working example of running [Next.js](https://nextjs.org/) on Google App
 
 **Update**:
 * v0.3.1 - 2019-10-27
-  * Adding docker support ala [https://www.blainegarrett.com/2019/10/26/dockerizing-a-node-app-for-deployment](this blog post)
+  * Adding docker support ala [this blog post](https://www.blainegarrett.com/2019/10/26/dockerizing-a-node-app-for-deployment)
   * Adding scripts to package.yaml to support building docker images
 * v0.2.2 - 2019-10-25
   * Upgrading various packages
