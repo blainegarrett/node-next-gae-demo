@@ -1,0 +1,9 @@
+node_modules
+npm-debug.log
+.git
+.gitignore
+.next
+build
+README.md
+.eslintignore
+.eslintrc
