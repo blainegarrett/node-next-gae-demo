@@ -16,5 +16,5 @@ RUN npm run build
 COPY . .
 
 # The Default Port for the application
-EXPOSE 8080
-ENTRYPOINT PORT=8080 NODE_ENV=production node server.js
+EXPOSE 8000
+ENTRYPOINT PORT=8000 NODE_ENV=production node server.js

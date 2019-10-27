@@ -12,5 +12,5 @@ RUN npm install
 COPY . .
 
 # The Default Port for the application
-EXPOSE 8080
-ENTRYPOINT PORT=8080 node server.js
+EXPOSE 8000
+ENTRYPOINT PORT=8000 node server.js
