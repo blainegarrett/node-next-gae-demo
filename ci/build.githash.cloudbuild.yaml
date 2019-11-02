@@ -1,0 +1,47 @@
+################################################################
+# Create a Production Build of Node Application                #
+#   and store Tar Archive as artifact in our GCS bucket        #
+################################################################
+
+steps:
+  - name: 'gcr.io/cloud-builders/gsutil'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        ls -l
+  - name: 'gcr.io/cloud-builders/git'
+    args:
+      [
+        'clone',
+        '--branch',
+        'v0.2.1',
+        'https://github.com/blainegarrett/node-next-gae-demo.git',
+        '.',
+      ]
+  - name: 'gcr.io/cloud-builders/gsutil'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        ls -l
+
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['install']
+
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['run', 'build']
+
+  - name: 'gcr.io/cloud-builders/gsutil'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        ls -l
+        tar -czvf xx-$BUILD_ID.tar.gz .
+        ls -l
+
+artifacts:
+  objects:
+    location: 'gs://devops-testingx/tars'
+    paths: ['xx-$BUILD_ID.tar.gz']
