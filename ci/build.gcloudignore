@@ -26,3 +26,6 @@ README.md
 # Dist code
 build
 .next
+
+# Miscellaneous
+.dockerignore

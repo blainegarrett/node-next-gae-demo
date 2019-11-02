@@ -2,6 +2,8 @@
 A simple working example of running [Next.js](https://nextjs.org/) on Google App Engine's [Node Standard Environment](https://cloud.google.com/appengine/docs/standard/nodejs/)
 
 **Update**:
+* v0.3.3 - 2019-11-02
+  * Adding Google App Engine Build and Deploy Support ala [this blog post](https://www.blainegarrett.com/2019/10/29/using-google-cloud-build-to-create-a-production-build-and-deploy-to-appengine-standard)
 * v0.3.2 - 2019-10-27
   * Adding Google Cloud Build and Google Container Registry Support ala [this blog post](https://www.blainegarrett.com/2019/10/27/building-and-pushing-your-dockerized-node-app-in-google-cloud-store)
 * v0.3.1 - 2019-10-27
