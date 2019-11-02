@@ -1,0 +1,52 @@
+################################################################
+# Create a Production Build of Node Application                #
+#   and store Tar Archive as artifact in our GCS bucket        #
+################################################################
+
+steps:
+  - name: 'gcr.io/cloud-builders/gsutil'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+
+        echo "Creating production build with for tag $TAG_NAME"
+        # List contents for kicks
+        ls -l
+
+        # Remove anything overwritten by production build process
+        rm -rf build
+
+  # Create Production Optimized Install of node_modules
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['ci', '--only=production']
+
+  # Run a Build
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['run', 'build']
+
+  # Delete files needed for build/test but not needed for later deploy
+  - name: 'gcr.io/cloud-builders/gsutil'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        ls -l
+        rm -rf components
+        rm -rf pages
+        rm -rf node_modules
+        rm app.yaml
+
+  - name: 'gcr.io/cloud-builders/gsutil'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        ls -l
+        tar -czvf build-$TAG_NAME.tar.gz .
+        ls -l
+
+artifacts:
+  objects:
+    location: 'gs://gae-builds'
+    paths: ['build-$TAG_NAME.tar.gz']

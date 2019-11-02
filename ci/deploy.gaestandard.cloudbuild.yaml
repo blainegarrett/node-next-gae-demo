@@ -1,0 +1,47 @@
+################################################################
+# Create a Production Build of Node Application                #
+#   and store Tar Archive as artifact in our GCS bucket        #
+################################################################
+
+steps:
+  - name: 'gcr.io/cloud-builders/gsutil'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        Deploying production build with $TAG_NAME
+        ls -l
+
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args: ['copy', 'gs://gae-builds/build-$TAG_NAME.tar.gz', '.']
+
+  - name: 'gcr.io/cloud-builders/gsutil'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        # Unzip into current directory
+        tar -zxvf build-$TAG_NAME.tar.gz
+
+        # List contents for debugging
+        ls -l
+
+        # Move the production yaml in plac
+        mv ./ci/deploy.gaestandard.app.yaml ./app.yaml
+
+        # Remove bits not needed for deploy
+        rm build-$TAG_NAME.tar.gz
+        rm -rf ci
+
+  # Deploy to App Engine Standard
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      [
+        '--verbosity=debug',
+        '--project=$PROJECT_ID',
+        'app',
+        'deploy',
+        './app.yaml',
+        '--no-promote',
+        '--version=$TAG_NAME',
+      ]
