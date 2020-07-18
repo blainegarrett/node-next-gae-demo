@@ -1,7 +1,7 @@
 {
   "extends": [
     "plugin:react/recommended",
-    "eslint:recommended",
+    "eslint:recommended"
   ],
   "parser": "babel-eslint",
     "env": {
@@ -14,7 +14,7 @@
         "experimentalObjectRestSpread": true,
         "modules": true,
         "jsx": true,
-        "ecmaVersion": 6,
+        "ecmaVersion": 6
       },
       "sourceType": "module"
     },

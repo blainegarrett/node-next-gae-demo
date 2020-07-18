@@ -1,6 +1,6 @@
 {
   "name": "node-next-gae-demo",
-  "version": "v0.3.3",
+  "version": "v0.3.4",
   "description": "A universal react next.js app designed to work for Google App Engine's Node.js Early Access Program",
   "main": "server.js",
   "scripts": {
@@ -44,18 +44,18 @@
   },
   "homepage": "https://github.com/blainegarrett/node-next-gae-demo#readme",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.19.2",
     "compression": "^1.7.4",
     "express": "^4.17.1",
-    "next": "^9.1.1",
+    "next": "^9.4.4",
     "prop-types": "^15.7.2",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.3",
-    "eslint": "^5.16.0",
-    "eslint-plugin-react": "^7.16.0",
-    "eslint-plugin-react-hooks": "^1.7.0"
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.4.0",
+    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react-hooks": "^4.0.8"
   }
 }
