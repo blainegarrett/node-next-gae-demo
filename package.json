@@ -44,7 +44,7 @@
   },
   "homepage": "https://github.com/blainegarrett/node-next-gae-demo#readme",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "compression": "^1.7.4",
     "express": "^4.17.1",
     "next": "^9.4.4",
