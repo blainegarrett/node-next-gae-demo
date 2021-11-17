@@ -77,8 +77,45 @@ This will deploy your build to a version of the `node-next-gae-demo` service (as
 
 eg: `gcloud --project blaine-garrett app deploy app.yaml --version main --verbosity=debug`
 
+<br />
+## Docker Setup
+Configurations are included to build docker containers using Node 16 base image.
 
-**Prerequisites**:
+### Development Container
+ You can build and run a docker image to test Docker setup locally. This helps debug CI issues and illustrates running the app in a container. 
+ 
+ - NOTE: You should not deploy this image as next is running in development mode.
+ - NOTE: Internal docker networking is set to run on port 8000 as defined in the `./ci/build.dev.Dockerfile`
+<br /><br />
+
+To build the local docker image in dev mode, run:
+```
+npm run docker:build:dev
+``` 
+
+To run the newly created image on port 3001, run:
+```
+docker run -p 3001:8000 gae-node-next-demo-dev
+```
+Open `localhost:3001` in your browser to see the image running.
+
+Tip: To list all running contianers
+```
+docker ps
+```
+
+Tip: To kill a running container
+```
+docker kill <CONTAINER_ID>
+```
+<br /><br />
+
+
+
+
+
+
+## Prerequisites:
 * You must have a Google Cloud Account created. [Sign up here](https://cloud.google.com/).
 * You must have a project created. Replace *your_project_id* with the id of your project.
 * You must have the Google Cloud SDK command line tools installed. [Installation Instructions](https://cloud.google.com/sdk/)
