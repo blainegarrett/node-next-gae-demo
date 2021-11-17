@@ -2,6 +2,9 @@
 A simple working example of running [Next.js](https://nextjs.org/) on Google App Engine's [Node Standard Environment](https://cloud.google.com/appengine/docs/standard/nodejs/)
 
 **Update**:
+* v1.0.0 - 2021-11-19
+  * Removed server.js dependency
+  * Added support for passing PORT to npm command for dev server
 * v0.3.4 - 2020-07-18
   * Security upgrades for various packages
 * v0.3.3 - 2019-11-02
@@ -47,13 +50,20 @@ A simple working example of running [Next.js](https://nextjs.org/) on Google App
 
 
 # Development
-Note: You need [node](https://nodejs.org) installed. I am using v8.11.3
+Note: You need [node](https://nodejs.org) installed. I am using v16.3.0
 
-**Installation:** `npm install`
+### Installation:
+To install all required dependencies, simply run:
+`npm install`
 
-**Local Development:**: `npm run dev` Point browser to localhost:3000
+### Local Development:
+`npm run dev`
 
-**Production Build:** `npm run build` (Note: It is a good idea to remove your ./build dir before build/deploy to remove unused build files)
+If you would like to run on a specific port (3001 for example), run:
+`PORT=3001 npm run dev`
+
+### Production Build:
+`npm run build` (Note: It is a good idea to remove your ./build dir before build/deploy to remove unused build files)
 
 **Running Production Build Locally:** `npm run start-local` Point browser to localhost:8080
 
