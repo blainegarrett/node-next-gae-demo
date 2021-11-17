@@ -11,7 +11,7 @@
     "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy:gae": "gcloud --project blaine-garrett app deploy app.yaml --version main --verbosity=debug",
-    "docker:build:dev": "docker build -t gae-node-next-demo-dev -f ./ci/build.dev.Dockerfile .",
+    "docker:build:dev": "docker build -t gae-node-next-demo:dev -f ./ci/build.dev.Dockerfile .",
     "docker:run:dev": "docker run -p 3000:8000 gae-node-next-demo",
     "docker:build:production": "docker build -t gae-node-next-demo:prod -f ./ci/build.production.Dockerfile .",
     "docker:run:production": "docker run -p 8080:8000 gae-node-next-demo:prod",

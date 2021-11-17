@@ -78,12 +78,13 @@ This will deploy your build to a version of the `node-next-gae-demo` service (as
 eg: `gcloud --project blaine-garrett app deploy app.yaml --version main --verbosity=debug`
 
 <br />
-## Docker Setup
+
+# Local Docker Setup
+ You can build and run a docker image locally to test Docker setup locally. This helps debug CI issues and illustrates running the app in a container. 
+
 Configurations are included to build docker containers using Node 16 base image.
 
-### Development Container
- You can build and run a docker image to test Docker setup locally. This helps debug CI issues and illustrates running the app in a container. 
- 
+## Development Container 
  - NOTE: You should not deploy this image as next is running in development mode.
  - NOTE: Internal docker networking is set to run on port 8000 as defined in the `./ci/build.dev.Dockerfile`
 <br /><br />
@@ -95,7 +96,7 @@ npm run docker:build:dev
 
 To run the newly created image on port 3001, run:
 ```
-docker run -p 3001:8000 gae-node-next-demo-dev
+docker run -p 3001:8000 gae-node-next-demo:dev
 ```
 Open `localhost:3001` in your browser to see the image running.
 
@@ -110,8 +111,25 @@ docker kill <CONTAINER_ID>
 ```
 <br /><br />
 
+## Production Container
+This will crete and run a production docker image
 
+ - NOTE: Internal docker networking is set to run on port 8000 as defined in the `./ci/build.dev.Dockerfile`
+<br /><br />
 
+To build the local docker image in production mode, run:
+```
+npm run docker:build:production
+``` 
+To run the newly created image on port 8080, run:
+```
+docker run -p 8080:8000 gae-node-next-demo:prod
+```
+Open `localhost:8080` in your browser to see the image running.
+
+- Note: This command is aliased for convenience as `npm run docker:run:production`. To run on a different local port, update the command or run the one above.
+
+<br /><br />
 
 
 
