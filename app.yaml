@@ -1,4 +1,4 @@
-runtime: nodejs10
+runtime: nodejs16
 
 # what follows will be optional in the future:
 service: node-next-gae-demo

@@ -2,12 +2,12 @@
   "name": "node-next-gae-demo",
   "version": "v0.3.4",
   "description": "A universal react next.js app designed to work for Google App Engine's Node.js Early Access Program",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "dev": "node server.js",
+    "dev": "next dev -p ${PORT:-3000}",
     "build": "next build",
-    "start": "node server.js",
-    "start-local": "NODE_ENV=production PORT=8080 node server.js",
+    "start": "next start -p ${PORT:-8080}",
+    "start-local": "NODE_ENV=production next start -p ${PORT:-8080}",
     "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy:gae": "gcloud --project blaine-garrett app deploy app.yaml --version main --verbosity=debug",
@@ -44,13 +44,11 @@
   },
   "homepage": "https://github.com/blainegarrett/node-next-gae-demo#readme",
   "dependencies": {
-    "axios": "^0.19.2",
-    "compression": "^1.7.4",
-    "express": "^4.17.1",
-    "next": "^9.4.4",
+    "axios": "^0.24.0",
+    "next": "^12.0.4",
     "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
