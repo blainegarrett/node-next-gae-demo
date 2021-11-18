@@ -131,6 +131,17 @@ Open `localhost:8080` in your browser to see the image running.
 
 <br /><br />
 
+# Using Google Cloud Build
+Less tested build configurations are in place to build and deploy tar files (GAE Standard) and Docker Images (GAE Flexible and Cloud Run) via Google Cloud Build. Experiment at your own risk and modify as per your needs.
+
+Build a docker container and store in Google Container Registry
+```
+npm run cloudbuild:production
+```
+
+For tar file support see the `build.gaestandard.cloudbuild.yaml` and `deploy.gaestandard.cloudbuild.yaml`
+
+
 
 
 ## Prerequisites:
