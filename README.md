@@ -7,6 +7,9 @@ A simple working example of running [Next.js](https://nextjs.org/) on Google App
   * Added support for passing PORT to npm command for dev server.
   * Updating app.yaml for node16 runtime
   * Upgrading axios to latest, next.js to 12, react to 17
+  * Updating ci build scripts and adding documentation
+  * Converting eslint directives to leverage next.js's builtins
+
 * v0.3.4 - 2020-07-18
   * Security upgrades for various packages
 * v0.3.3 - 2019-11-02

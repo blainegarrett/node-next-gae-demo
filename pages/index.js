@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import React from 'react';
 import { withRouter } from 'next/router';
 import PropTypes from 'prop-types';
