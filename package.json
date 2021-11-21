@@ -1,6 +1,6 @@
 {
   "name": "node-next-gae-demo",
-  "version": "v0.3.4",
+  "version": "v1.0.0",
   "description": "A universal react next.js app designed to work for Google App Engine's Node.js Early Access Program",
   "main": "index.js",
   "scripts": {
@@ -8,11 +8,11 @@
     "build": "next build",
     "start": "next start -p ${PORT:-8080}",
     "start-local": "NODE_ENV=production next start -p ${PORT:-8080}",
-    "lint": "eslint .",
+    "lint": "next lint",
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy:gae": "gcloud --project blaine-garrett app deploy app.yaml --version main --verbosity=debug",
-    "docker:build:dev": "docker build -t gae-node-next-demo -f ./ci/build.dev.Dockerfile .",
-    "docker:run:dev": "docker run -p 3000:8000 gae-node-next-demo",
+    "docker:build:dev": "docker build -t gae-node-next-demo:dev -f ./ci/build.dev.Dockerfile .",
+    "docker:run:dev": "docker run -p 3000:8000 gae-node-next:demo",
     "docker:build:production": "docker build -t gae-node-next-demo:prod -f ./ci/build.production.Dockerfile .",
     "docker:run:production": "docker run -p 8080:8000 gae-node-next-demo:prod",
     "cloudbuild:production": "gcloud builds submit  --verbosity=debug --ignore-file=./ci/build.gcloudignore --config=./ci/build.production.cloudbuild.yaml --project=blaine-garrett"
@@ -51,9 +51,7 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.4.0",
-    "eslint-plugin-react": "^7.20.3",
-    "eslint-plugin-react-hooks": "^4.0.8"
+    "eslint": "7.32.0",
+    "eslint-config-next": "12.0.4"
   }
 }

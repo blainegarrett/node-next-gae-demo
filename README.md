@@ -7,6 +7,9 @@ A simple working example of running [Next.js](https://nextjs.org/) on Google App
   * Added support for passing PORT to npm command for dev server.
   * Updating app.yaml for node16 runtime
   * Upgrading axios to latest, next.js to 12, react to 17
+  * Updating ci build scripts and adding documentation
+  * Converting eslint directives to leverage next.js's builtins
+
 * v0.3.4 - 2020-07-18
   * Security upgrades for various packages
 * v0.3.3 - 2019-11-02
@@ -77,8 +80,74 @@ This will deploy your build to a version of the `node-next-gae-demo` service (as
 
 eg: `gcloud --project blaine-garrett app deploy app.yaml --version main --verbosity=debug`
 
+<br />
 
-**Prerequisites**:
+# Local Docker Setup
+ You can build and run a docker image locally to test Docker setup locally. This helps debug CI issues and illustrates running the app in a container. 
+
+Configurations are included to build docker containers using Node 16 base image.
+
+## Development Container 
+ - NOTE: You should not deploy this image as next is running in development mode.
+ - NOTE: Internal docker networking is set to run on port 8000 as defined in the `./ci/build.dev.Dockerfile`
+<br /><br />
+
+To build the local docker image in dev mode, run:
+```
+npm run docker:build:dev
+``` 
+
+To run the newly created image on port 3001, run:
+```
+docker run -p 3001:8000 gae-node-next-demo:dev
+```
+Open `localhost:3001` in your browser to see the image running.
+
+Tip: To list all running contianers
+```
+docker ps
+```
+
+Tip: To kill a running container
+```
+docker kill <CONTAINER_ID>
+```
+<br /><br />
+
+## Production Container
+This will crete and run a production docker image
+
+ - NOTE: Internal docker networking is set to run on port 8000 as defined in the `./ci/build.dev.Dockerfile`
+<br /><br />
+
+To build the local docker image in production mode, run:
+```
+npm run docker:build:production
+``` 
+To run the newly created image on port 8080, run:
+```
+docker run -p 8080:8000 gae-node-next-demo:prod
+```
+Open `localhost:8080` in your browser to see the image running.
+
+- Note: This command is aliased for convenience as `npm run docker:run:production`. To run on a different local port, update the command or run the one above.
+
+<br /><br />
+
+# Using Google Cloud Build
+Less tested build configurations are in place to build and deploy tar files (GAE Standard) and Docker Images (GAE Flexible and Cloud Run) via Google Cloud Build. Experiment at your own risk and modify as per your needs.
+
+Build a docker container and store in Google Container Registry
+```
+npm run cloudbuild:production
+```
+
+For tar file support see the `build.gaestandard.cloudbuild.yaml` and `deploy.gaestandard.cloudbuild.yaml`
+
+
+
+
+## Prerequisites:
 * You must have a Google Cloud Account created. [Sign up here](https://cloud.google.com/).
 * You must have a project created. Replace *your_project_id* with the id of your project.
 * You must have the Google Cloud SDK command line tools installed. [Installation Instructions](https://cloud.google.com/sdk/)

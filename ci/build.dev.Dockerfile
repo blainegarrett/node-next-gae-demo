@@ -1,5 +1,5 @@
-# Base the Image off NODE 10
-FROM node:10
+# Base the Image off NODE 16
+FROM node:16
 
 # Create app directory in container
 WORKDIR /app
@@ -13,4 +13,4 @@ COPY . .
 
 # The Default Port for the application
 EXPOSE 8000
-ENTRYPOINT PORT=8000 node server.js
+ENTRYPOINT PORT=8000 npm run dev
